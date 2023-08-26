@@ -3,6 +3,7 @@ import 'dotenv/config.js'
 import '../../config/db.js'
 
 let users = [{
+    username: "Gabriela",
     email: "gabriela@mindy.com",
     password: "$2a$10$XZBDuOYHcHSzZNzf2ws7Quvu3YmKgSagWRUG1eGlBLSdxJunpN1LC",
     location: "Argentina",
