@@ -3,7 +3,6 @@ import joi from 'joi';
 const userRegister = joi.object({
   username: joi.string()
     .required()
-    .email({ minDomainSegments: 2 })
     .alphanum()
     .messages({
       'any.required': 'Username is required',

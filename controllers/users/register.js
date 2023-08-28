@@ -1,20 +1,22 @@
-import User from "../../models/User.js";
+import User from '../../models/User.js'
+
+function generateVerificationCode() {
+    const length = 6; 
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    let code = '';
+    for (let i = 0; i < length; i++) {
+        code += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+    return code;
+}
 
 export default async (req, res, next) => {
-
     try {
-        const one = await User.create(
-            { ...req.body });
+        const verificationCode = generateVerificationCode();
 
-        return res.status(201).json({
-            response: { ...one._doc},
-            success: true,
-            message: 'User created'
-        })
+        const newUser = await User.create({ ...req.body, verify_code: verificationCode });
+
+        return res.status(201).json({ response: newUser, success: true, message: 'User created successfully' });
     } catch (error) {
-        return res.status(500).json({
-            response: null,
-            success: false,
-            message: error.message
-    })
+        next(error);
 }}

@@ -11,7 +11,7 @@ app.set('port', port)                     //configuro el puerto con la variable 
 let server = http.createServer(app)       //utilizo el módulo http para crear un servidor (con las configuraciones que se realizaron en app)
 
 function ready() {                        //ready es una función que se va a ejecutar cuando se levante correctamente el servidor
-    console.log('server ready on port '+port)           //me informa en la consola que el servidor se levantó correctamente en el puerto PORT
+    console.log('server ready on port '+ port)           //me informa en la consola que el servidor se levantó correctamente en el puerto PORT
 }
 //listen se utiliza para escuchar un puerto y es el encargado de levantar efectivamente el servidor (empieza a funcionar)
 server.listen(
