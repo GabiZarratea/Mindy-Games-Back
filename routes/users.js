@@ -10,11 +10,16 @@ import accountNotExist from '../middlewares/accountNotExist.js';
 import passwordIsOk from '../middlewares/passwordIsOk.js';
 import generateToken from '../middlewares/generateToken.js';
 import login from "../controllers/users/login.js";
+import signout from '../controllers/users/signout.js';
+import passport from '../middlewares/passport.js';
+import signintoken from "../controllers/users/signintoken.js";
 
 const user_router = Router();
 
 user_router.get('/', read)
 user_router.post('/register', validator(userRegister), accountExists, createHash, register)
 user_router.post('/login', validator(userLogin), accountNotExist, passwordIsOk, generateToken, login)
+user_router.post('/signout', passport.authenticate('jwt', { session:false }), signout)
+user_router.get('/signintoken', passport.authenticate('jwt', { session:false }), signintoken)
 
 export default user_router;
