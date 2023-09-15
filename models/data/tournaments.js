@@ -19,6 +19,12 @@ let tournaments = [{
     date_init: '2023/11/27',
     date_finish: '2023/12/11',
     schedule: '9:00 A.M',
+},
+{
+    name_game: 'Destiny',
+    date_init: '2023/09/17',
+    date_finish: '2023/09/25',
+    schedule: '11:00 A.M',
 }]
 
 Tournament.insertMany(tournaments)
